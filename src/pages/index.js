@@ -48,12 +48,15 @@ export default function Home({ initialUsers }) {
       <main className={`min-h-screen w-screen p-4 ${inter.className}`}>
         <ul className="flex flex-wrap gap-3 mb-4">
           {users.map(({ _id, name }, index) => (
-            <Link key={_id} href={`/${_id}`}>
-              <li className="flex border text-sm rounded-sm p-2 cursor-pointer hover:bg-blue-600 hover:text-white border-blue-600 hover:opacity-75 transition-all ease-in-out duration-100">
+            <li key={_id}>
+              <Link
+                href={`/${_id}`}
+                className="flex border text-sm rounded-sm p-2 cursor-pointer hover:bg-blue-600 hover:text-white border-blue-600 hover:opacity-75 transition-all ease-in-out duration-100"
+              >
                 <span className="font-semibold mr-1">{index + 1}.</span>
                 <h2>{name}</h2>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
         {users.length === loadedCount && (
