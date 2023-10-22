@@ -19,11 +19,32 @@ export default function Home({ initialUsers }) {
     setLoadedCount(end);
   };
 
+  const title = "User List - NextJS App";
+  const description = "A comprehensive list of users built with NextJS.";
+  const website = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN;
+
   return (
     <>
       <Head>
-        <title>User List - NextJS App</title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`https://${website}`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://${website}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="http://placehold.it/32x32" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={`https://${website}`} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="http://placehold.it/32x32" />
       </Head>
+
       <main className={`min-h-screen w-screen p-4 ${inter.className}`}>
         <ul className="flex flex-wrap gap-3 mb-4">
           {users.map(({ _id, name }, index) => (
