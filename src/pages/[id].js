@@ -105,7 +105,8 @@ export default function UserPage({ user }) {
 }
 
 export async function getStaticPaths() {
-  const paths = users.slice(0, 20).map((user) => ({
+  // API Call to get all player IDs
+  const paths = users.map((user) => ({
     params: { id: user._id.toString() },
   }));
 
@@ -116,6 +117,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  // GET Player data based on ID 
   const user = users.find((u) => u._id === params.id);
 
   if (!user) {
